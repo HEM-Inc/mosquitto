@@ -4,7 +4,7 @@
 # ---- Mosquitto Instance ----
 FROM eclipse-mosquitto:latest AS mosquitto
 
-RUN --mount=type=secret,id=MTC_PASSWORD mosquitto_passwd /mosquitto/data/passwd mtconnect $(cat MTC_PASSWORD)
+RUN --mount=type=secret,id=MTC_PASSWORD mosquitto_passwd -b /mosquitto/data/passwd mtconnect $(cat MTC_PASSWORD)
 
 VOLUME ["/mosquitto/data", "/mosquitto/log"]
 EXPOSE 1883
