@@ -2,7 +2,7 @@
 ### Latest Approved Mosquitto Instance
 
 # ---- Mosquitto Instance ----
-FROM eclipse-mosquitto:latestt AS mosquitto
+FROM eclipse-mosquitto:latest AS mosquitto
 
 # USER mosquitto
 # COPY --chown=mosquitto:mosquitto ./passwd /mosquitto/data/passwd
