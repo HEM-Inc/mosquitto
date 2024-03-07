@@ -31,6 +31,7 @@
 | Rev |     Date    |       Author                | Change Description                |
 |:---:|:-----------:|:-------------------------:|:-----------------------------------:|
 | 0.1 |  02/22/2024           |     Prateeksha Shanbhogue       |    Initial version  |
+| 0.2 |  03/07/2024           |     Prateeksha Shanbhogue       |    Updated TC status  |
 
 ## **1. Feature Overview**
 
@@ -83,7 +84,7 @@ The design strategy involves utilizing GitHub Actions, a feature provided by Git
 
 Docker secret syntax to mount the github environment variable to the docker container:
 
-    RUN --mount=type=secret,id=SECRET_ID,target=/run/secrets/PASSWORD_FILE_NAME
+    RUN --mount=type=secret,id=SECRET_ID,target=/run/secrets/SECRET_ID
 
 
 ### **3.2 Config changes**
@@ -113,29 +114,29 @@ Not Applicable
 
 | Test   Case ID | Test   Category                | Test Case   Description                                       | Expected Result                                             | Status | Comments |
 |----------------|-------------------------------------|---------------------------------------------------------------|-------------------------------------------------------------|--------|----------|
-|1              | Secret generation Using github      | Verify username and passwords   creation using github secrets |  Username and password creation successful                  |        |          |
-| 2              |                                     | Verify the updated secrets in github                          | Updation successful                                         |        |          |
-| 3             | Docker build using github actions | Verify valid github secrets are   mount to the container      | Image Successfully  pushed to docker-hub                    |        |          |
-| 4            |                                     | Verify invalid github secret ID mount to the container    | Error in github actions and no   image pushed to docker-hub |        |          |
-| 5             |                                     | Verify docker image build                                     | Image push to docker-hub   successful                       |        |          |
-| 6               |                                     | Verify use invalid   environment  variable while building     | Error and no image pushed to   docker-hub                   |        |          |
-|7              |   | Verify trigger in github workflow on push |  Trigger successful
-|                  |        |          |                |                                     |                                                               |                                                             |        |          |
+|1              | Secret generation Using github      | Verify username and passwords   creation using github secrets |  Username and password creation successful                  | PASS       |          |
+| 2              |                                     | Verify the updated secrets in github                          | Updation successful                                         |     PASS   |          |
+| 3             | Docker build using github actions | Verify valid github secrets are   mount to the container      | Image Successfully  pushed to docker-hub                    |  PASS      |          |
+| 4            |                                     | Verify invalid github secret ID mount to the container    |  Image with invalid credentials pushed to docker-hub |    PASS    |          |
+| 5             |                                     | Verify docker image build using workflow                                    | Image push to docker-hub   successful                       |     PASS   |          |
+|6              |   | Verify trigger in github workflow on push |  Trigger successful | PASS |
+| 
 
 
 ### **8.2 Integration Test Cases**
 | Test Case ID | Test Case Description                                                            | Expected Result                                  | Status | Comments |   |
 |--------------|----------------------------------------------------------------------------------|--------------------------------------------------|--------|----------|---|
-| 1            | Verify mosquitto image pull in  IPC                                         | Mosquitto image run successfull           |        |          |   |
-| 2            | Verify the integration of the mosquitto image with agent                               | Logs received in agent and broker                                   |        |          |   |
-| 3            | Verify data received from agent                     | Mosquitto run Success                            |        |          |   |
-| 4            | Check with invalid port configuration  in mosquitto.conf                                                 | Error in mosquitto run                              |        |          |   |
-| 5            | Verify broker connection with invalid  username or password when allow_anonymous is false              | Authentication error in broker                           |        |          |   |
-| 6            | Verify broker connection with invalid  username or password when allow_anonymous is true               | Connection successful                            |        |          |   |
-| 7            | Verify broker connection for anonymous user with allow_anonymous is false | Authentication error in broker |        |          |   |
-| 8            | Verify broker connection  for anonymous user with allow_anonymous is true  | Connection successful                            |        |          |   |
-| 9            | Verify broker connection for mtconnect user with   valid password               | Connection successful                            |        |          |   |
-| 10           | Verify  broker connection for mtconnect user with   invalid password             | Authentication error in broker |        |          |   |
-| 11           | Verify broker connection   for hemsaw user                                  | Successful connection for hemsaw user            |        |          |   |
-| 12           | Verify broker connection for invalid user                                 | Authentication error                             |        |          |   |
+| 1            | Verify mosquitto image pull in  IPC                                         | Mosquitto image run successfull in IPC           |  PASS      |          |   |
+| 2            | Verify the integration of the mosquitto image with agent                               | Connection logs received in agent and broker                                   |   PASS     |          |   |
+| 3            | Verify data received from agent                     | Logs received in broker                           |  PASS      |          |   |
+| 4            | Check with invalid port configuration  in mosquitto.conf                                                 | Error in mosquitto run                              |   PASS     |          |   |
+| 5            | Verify broker connection with invalid  username or password when allow_anonymous is false              | Authentication error in broker                           |  PASS      |          |   |
+| 6            | Verify broker connection with invalid  username or password when allow_anonymous is true               | Authentication error in broker                            |   PASS     |          |   |
+| 7            | Verify broker connection for anonymous user with allow_anonymous is false | Authentication error in broker |   PASS     |          |   |
+| 8            | Verify broker connection  for anonymous user with allow_anonymous is true  | Connection successful                            | PASS       |          |   |
+| 9            | Verify broker connection for mtconnect user with   valid password               | Connection successful                            |    PASS    |          |   |
+| 10           | Verify  broker connection for mtconnect user with   invalid password             | Authentication error in broker |      PASS  |          |   |
+| 11           | Verify broker connection   for hemsaw user with valid password                                | Connection successful            |  PASS      |          |   |
+| 12           | Verify broker connection   for hemsaw user with invalid password                                 | Authentication error                             |  PASS      |          |   |
+| 13           | Verify broker connection for invalid user                                 | Authentication error                             |  PASS      |          |   |
 |
