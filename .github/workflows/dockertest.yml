@@ -12,7 +12,7 @@ on:
   pull_request:
 
   # allows you to run this workflow manually from the actions tab
-  workflow_dispatch:
+  # workflow_dispatch:
 
 env:
   IMAGE_NAME: mosquitto

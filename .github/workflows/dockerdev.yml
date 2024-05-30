@@ -14,7 +14,7 @@ on:
   #  branches:
   #    - "main"
   # allows you to run this workflow manually from the actions tab
-  workflow_dispatch:
+  # workflow_dispatch:
 
 env:
   app: mosquitto
