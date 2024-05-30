@@ -9,7 +9,7 @@ on:
     #   - main
 
   # Run tests for any PRs.
-  # pull_request:
+  pull_request:
 
   # allows you to run this workflow manually from the actions tab
   workflow_dispatch:
