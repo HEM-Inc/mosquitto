@@ -1,19 +1,20 @@
-name: Docker Publish Latest
+name: Docker Publish Dev
 
 on:
   push:
     # Publish `main` as Docker `latest` image.
-    # branches:
-    #   - "main"
+    branches:
+      - develop
+      - dev
 
     # Publish `2.1.2` tags as releases.
-    tags:
-      - "*.*.*"
+    # tags:
+    #   - "*.*.*"
   # pull_request:
   #  branches:
   #    - "main"
   # allows you to run this workflow manually from the actions tab
-  # workflow_dispatch:
+  workflow_dispatch:
 
 env:
   app: mosquitto
@@ -37,11 +38,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - 
-        name: create version
-        run: |
-          echo "VERSION=$(echo ${{ github.ref_name }})" >> $GITHUB_ENV
-          echo "MAJOR_VERSION=$(echo ${{ github.ref_name }} | sed -E 's/^([0-9]+)\.([0-9]+)\..+/\1.\2/')" >> $GITHUB_ENV
       -
         name: Build and push
         uses: docker/build-push-action@v5
@@ -55,9 +51,7 @@ jobs:
             ODS_USERNAME=${{ secrets.ODS_USERNAME }}
           # docker hub user/repo:tag
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/mosquitto:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/mosquitto:${{ env.VERSION }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/mosquitto:${{ env.MAJOR_VERSION }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/mosquitto:experimental
           # push to docker hub
           push: true
 

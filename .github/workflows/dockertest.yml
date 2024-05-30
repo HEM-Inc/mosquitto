@@ -3,13 +3,16 @@ name: Docker Test
 on:
   push:
     # Test `develop`
-    branches:
-      - develop
-      - dev
-      - main
+    # branches:
+    #   - develop
+    #   - dev
+    #   - main
 
   # Run tests for any PRs.
-  pull_request:
+  # pull_request:
+
+  # allows you to run this workflow manually from the actions tab
+  workflow_dispatch:
 
 env:
   IMAGE_NAME: mosquitto
