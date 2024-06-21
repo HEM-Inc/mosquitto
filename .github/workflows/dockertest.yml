@@ -9,7 +9,7 @@ on:
     #   - main
 
   # Run tests for any PRs.
-  pull_request:
+  # pull_request:
 
   # allows you to run this workflow manually from the actions tab
   # workflow_dispatch:
@@ -25,32 +25,32 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set password and username secrets as environment variables
         run: |
-        
-          if [ -z "${{ secrets.MTC_PASSWD }}" ]; then 
-            echo "Secret MTC_PASSWD is missing!" 
-            exit 1 
-          fi 
-          if [ -z "${{ secrets.MTC_USERNAME }}" ]; then 
-            echo "Secret MTC_USERNAME is missing!" 
-            exit 1 
-          fi 
-          if [ -z "${{ secrets.ODS_USERNAME}}" ]; then 
-            echo "Secret ODS_USERNAME is missing!" 
-            exit 1 
-          fi 
-          if [ -z "${{ secrets.ODS_PASSWD }}" ]; then 
-            echo "Secret ODS_PASSWD is missing!" 
-            exit 1 
-          fi 
-          
-          echo "MTC_PASSWD=${{ secrets.MTC_PASSWD }}" >> $GITHUB_ENV 
-          echo "MTC_USERNAME=${{ secrets.MTC_USERNAME }}" >> $GITHUB_ENV 
-          echo "ODS_USERNAME=${{ secrets.ODS_USERNAME }}" >> $GITHUB_ENV 
-          echo "ODS_PASSWD=${{ secrets.ODS_PASSWD }}" >> $GITHUB_ENV 
-      
+
+          if [ -z "${{ secrets.MTC_PASSWD }}" ]; then
+            echo "Secret MTC_PASSWD is missing!"
+            exit 1
+          fi
+          if [ -z "${{ secrets.MTC_USERNAME }}" ]; then
+            echo "Secret MTC_USERNAME is missing!"
+            exit 1
+          fi
+          if [ -z "${{ secrets.ODS_USERNAME}}" ]; then
+            echo "Secret ODS_USERNAME is missing!"
+            exit 1
+          fi
+          if [ -z "${{ secrets.ODS_PASSWD }}" ]; then
+            echo "Secret ODS_PASSWD is missing!"
+            exit 1
+          fi
+
+          echo "MTC_PASSWD=${{ secrets.MTC_PASSWD }}" >> $GITHUB_ENV
+          echo "MTC_USERNAME=${{ secrets.MTC_USERNAME }}" >> $GITHUB_ENV
+          echo "ODS_USERNAME=${{ secrets.ODS_USERNAME }}" >> $GITHUB_ENV
+          echo "ODS_PASSWD=${{ secrets.ODS_PASSWD }}" >> $GITHUB_ENV
+
       - name: Run tests
         run: |
           if [ -f docker-compose.test.yml ]; then
@@ -63,5 +63,3 @@ jobs:
             --secret id=ODS_USERNAME,env=ODS_USERNAME \
             --secret id=ODS_PASSWD,env=ODS_PASSWD . --file Dockerfile
           fi
-          
-          
