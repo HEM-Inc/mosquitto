@@ -2,7 +2,7 @@
 ### Latest Approved Mosquitto Instance
 
 # ---- Mosquitto Instance ----
-FROM eclipse-mosquitto:latest AS mosquitto
+FROM eclipse-mosquitto:2.0.18-openssl AS mosquitto
 
 # RUN --mount=type=secret,id=mtc_password mosquitto_passwd -c -b /mosquitto/data/passwd mtconnect $(cat /run/secrets/mtc_password)
 RUN --mount=type=secret,id=MTC_PASSWD,target=/run/secrets/MTC_PASSWD \
