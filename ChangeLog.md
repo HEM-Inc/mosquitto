@@ -7,6 +7,14 @@ For build level release notes see https://github.com/mtconnect/cppagent/
 
 ## [Unreleased] 
 
+## [2.0.19] 2024/10/07 - Max Harris
+### Changed
+- Approved the init release of the 2.0.19 eclipse-mosquitto version.
+- Version 2.0.19 of Mosquitto has been released. This is a security and bugfix release.
+- Security: - Fix mismatched subscribe/unsubscribe with normal/shared topics. - Fix crash on bridge using remapped topic being sent a crafted packet. - Don't allow SUBACK with missing reason codes in client library.
+- Broker: - Fix assert failure when loading a persistence file that contains subscriptions with no client id. - Fix local bridges being incorrectly expired when persistent_client_expiration is in use. - Fix use of CLOCK_BOOTTIME for getting time. Closes #3089. - Fix mismatched subscribe/unsubscribe with normal/shared topics. - Fix crash on bridge using remapped topic being sent a crafted packet.
+- Client library: - Fix some error codes being converted to string as "unknown". Closes #2579. - Clear SSL error state to avoid spurious error reporting. Closes #3054. - Fix "payload format invalid" not being allowed as a PUBREC reason code. - Don't allow SUBACK with missing reason codes.
+
 ## [2.0.18] 2023/12/27 - Max Harris
 ### Changed
 Approved the init release of the 2.0.18 eclipse-mosquitto version.
