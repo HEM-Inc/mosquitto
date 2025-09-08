@@ -17,6 +17,23 @@ For build level release notes see https://github.com/mtconnect/cppagent/
 
 ## [Unreleased] 
 
+## [2.0.22] 2025/09/08 - Max Harris
+## Changed
+- Broker:
+    - Windows: Fix broker crash on startup if using log_dest stdout
+    - Bridge: Fix idle_timeout never occurring for lazy bridges.
+    - Fix case where max_queued_messages = 0 was not treated as unlimited. Closes #3244.
+    - Fix --version exit code and output. Closes #3267.
+    - Fix crash on receiving a $CONTROL message over a bridge, if per_listener_settings is set true and the bridge is carrying out topic remapping. Closes #3261.
+    - Fix incorrect reference clock being selected on startup on Linux. Closes #3238.
+    - Fix reporting of client disconnections being incorrectly attributed to "out of memory". Closes #3253.
+    - Fix compilation when using WITH_OLD_KEEPALIVE. Closes #3250.
+    - Add Windows linker file for the broker to the installer. Closes #3269.
+    - Fix Websockets PING not being sent on Windows. Closes #3272.
+    - Fix problems with secure websockets. Closes #1211.
+    - Fix crash on exit when using WITH_EPOLL=no. Closes #3302.
+    - Fix clients being incorrectly expired when they have keepalive == max_keepalive. Closes #3226, #3286.
+
 ## [2.0.21] 2025/03/27 - Max Harris
 ### Changed
 - Broker:
