@@ -17,8 +17,17 @@ For build level release notes see [https://github.com/mtconnect/cppagent/](https
 
 ## [Unreleased] 
 
+## [2.1.2] 2026/05/04 - Max Harris
+### Changed
+- 2.1.0 and two patches have been released. 
+
+### Deprecated
+- The acl_file option is deprecated in favour of the acl-file plugin, which is the same code but moved into a plugin. The acl_file option will be removed in 3.0. 
+- The password_file option is deprecated in favour of the password-file plugin, which is the same code but moved into a plugin. The password_file option will be removed in 3.0. 
+- The per_listener_settings option is deprecated in favour of the new listener specific options. The per_listener_settings option will be removed in 3.0.
+
 ## [2.0.22] 2025/09/08 - Max Harris
-## Changed
+### Changed
 - Broker:
     - Windows: Fix broker crash on startup if using log_dest stdout
     - Bridge: Fix idle_timeout never occurring for lazy bridges.
